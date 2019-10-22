@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h2>Параметр: {{ parameter.name }}</h2>
+    <p>
+        <a href="{%  url 'parameter_edit' pk=parameter.id %}">Редактировать</a> <a href="{%  url 'parameter_delete' pk=parameter.id %}">Удалить</a>
+    </p>
+    <ul>
+    <li><strong>Тип данных:</strong> {{ parameter.get_type_display }}</li>
+    <li><strong>Поле в опроснике:</strong> {{ parameter.get_interface_display }}</li>
+    </ul>
+
+    {% if parameter.params %}
+        <h5>Конфигурация поля опросника:</h5>
+    <pre>
+        {{ parameter.params }}
+    </pre>
+    {% endif %}
+
+{% endblock %}

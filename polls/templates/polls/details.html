@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h2>Опросник: {{ poll.name }}</h2>
+    <p>
+        <a href="{% url 'poll_edit' pk=poll.id %}">Редактировать</a> <a href="{% url 'poll_delete' pk=poll.id %}">Удалить</a>
+    </p>
+    <h5>Измеряемые параметры:</h5>
+    <ul>
+        {% for parameter in poll.parameters.all %}
+            <li><a target="_blank" href="{% url 'parameter_details' pk=parameter.id %}">{{ parameter.name }}</a></li>
+        {% endfor %}
+    </ul>
+    
+    <h5>Назначен пациентам:</h5>
+    <ul>
+        {% for patient in poll.patients.all %}
+            <li><a target="_blank" href="{% url 'patient_details' pk=patient.id %}">{{ patient.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

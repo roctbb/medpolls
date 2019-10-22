@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h2>Пациент: {{ patient.name }}</h2>
+    <p>
+        <a href="{%  url 'patient_edit' pk=patient.id %}">Редактировать</a> <a href="{%  url 'patient_delete' pk=patient.id %}">Удалить</a>
+    </p>
+    <ul>
+    <li><strong>Medsenger id:</strong> {{ patient.contract_id }}</li>
+    </ul>
+
+    <h5>Измерения:</h5>
+
+    <ul>
+    {% for measurment in patient.measurement_set.all %}
+        <li><i>{{ measurment.parameter.name }}, {{ measurment.datetime }}</i>: {{ measurment.value }}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

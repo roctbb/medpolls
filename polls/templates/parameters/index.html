@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h2>Параметры <a href="{% url 'parameter_create' %}" class="btn btn-success btn-sm float-right">Добавить</a></h2>
+    <table class="table table-striped" style="margin-top: 30px;">
+        <tr>
+            <th>Id</th>
+            <th>Имя</th>
+            <th>Тип данных</th>
+            <th>Поле в опроснике</th>
+        </tr>
+        {% for parameter in parameters %}
+            <tr>
+                <td>{{ parameter.id }}</td>
+                <td><a href="{% url 'parameter_details' pk=parameter.id %}">{{ parameter.name }}</a></td>
+                <td>{{ parameter.get_type_display }}</td>
+                <td>{{ parameter.get_interface_display }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

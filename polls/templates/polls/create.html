@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <h2>Добавление опросника</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="save btn btn-default">Добавить</button>
+    </form>
+{% endblock %}

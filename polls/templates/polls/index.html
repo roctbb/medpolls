@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h2>Опросники <a href="{% url 'poll_create' %}" class="btn btn-success btn-sm float-right">Добавить</a></h2>
+    <table class="table table-striped" style="margin-top: 30px;">
+        <tr>
+            <th>Id</th>
+            <th>Название</th>
+            <th></th>
+        </tr>
+        {% for poll in polls %}
+            <tr>
+                <td>{{ poll.id }}</td>
+                <td><a href="{% url 'poll_details' pk=poll.id %}">{{ poll.name }}</a></td>
+                <td><a href="{% url 'poll_run' pk=poll.id %}">Заполнить</a></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}
