@@ -10,6 +10,11 @@ class ParameterForm(ModelForm):
         model = Parameter
         fields = ['name', 'type', 'interface']
 
+class RuleForm(ModelForm):
+    class Meta:
+        model = Rule
+        fields = '__all__'
+
 
 class PatientForm(ModelForm):
     class Meta:

@@ -18,6 +18,7 @@ from django.urls import path
 import polls.views.parameters
 import polls.views.patients
 import polls.views.polls
+import polls.views.rules
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,12 +33,18 @@ urlpatterns = [
     path('patients/create', polls.views.patients.create, name='patient_create'),
     path('patients/<int:pk>/edit', polls.views.patients.edit, name='patient_edit'),
     path('patients/<int:pk>/delete', polls.views.patients.delete, name='patient_delete'),
-    
+
     path('polls', polls.views.polls.index, name='poll_index'),
     path('polls/<int:pk>/details', polls.views.polls.details, name='poll_details'),
     path('polls/create', polls.views.polls.create, name='poll_create'),
     path('polls/<int:pk>/edit', polls.views.polls.edit, name='poll_edit'),
     path('polls/<int:pk>/delete', polls.views.polls.delete, name='poll_delete'),
     path('polls/<int:pk>/run', polls.views.polls.run, name='poll_run'),
+
+    path('rules', polls.views.rules.index, name='rule_index'),
+    path('rules/<int:pk>/details', polls.views.rules.details, name='rule_details'),
+    path('rules/create', polls.views.rules.create, name='rule_create'),
+    path('rules/<int:pk>/edit', polls.views.rules.edit, name='rule_edit'),
+    path('rules/<int:pk>/delete', polls.views.rules.delete, name='rule_delete'),
 
 ]

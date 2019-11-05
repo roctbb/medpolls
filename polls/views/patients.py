@@ -39,7 +39,8 @@ def edit(request, pk):
 
 def details(request, pk):
     patient = get_object_or_404(Patient, pk=pk)
-    return render(request, 'patients/details.html', {'patient': patient})
+    parameters = Parameter.objects.all()
+    return render(request, 'patients/details.html', {'patient': patient, 'parameters': parameters})
 
 
 def delete(request, pk):

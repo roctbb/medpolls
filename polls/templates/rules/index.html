@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h2>Параметры <a href="{% url 'rule_create' %}" class="btn btn-success btn-sm float-right">Добавить</a></h2>
+    <table class="table table-striped" style="margin-top: 30px;">
+        <tr>
+            <th>Id</th>
+            <th>Имя</th>
+        </tr>
+        {% for rule in rules %}
+            <tr>
+                <td>{{ rule.id }}</td>
+                <td><a href="{% url 'rule_details' pk=rule.id %}">{{ rule.name }}</a></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

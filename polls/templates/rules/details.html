@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h2>Правило: {{ rule.name }}</h2>
+    <p>
+        <a href="{%  url 'rule_edit' pk=rule.id %}">Редактировать</a> <a href="{%  url 'rule_delete' pk=rule.id %}">Удалить</a>
+    </p>
+
+
+    {% if rule.params %}
+    <pre>
+        {{ rule.params }}
+    </pre>
+    {% endif %}
+
+{% endblock %}

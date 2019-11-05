@@ -10,7 +10,27 @@
     <li><strong>Medsenger id:</strong> {{ patient.contract_id }}</li>
     </ul>
 
-    <h5>Измерения:</h5>
+    <h6>Опросники:</h6>
+    <ul>
+    {% for poll in patient.polls.all %}
+        <li>{{ poll.name }}</li>
+    {% endfor %}
+    </ul>
+
+    <h6>Правила:</h6>
+    <ul>
+    {% for rule in patient.rules.all %}
+        <li>{{ rule.name }} - {% check_rule rule patient %}</li>
+    {% endfor %}
+    </ul>
+
+    <h6>Параметры:</h6>
+    {% for parameter in parameters %}
+        <i>{{ parameter.name }}</i>
+        {% parameter_plot parameter patient %}
+    {% endfor %}
+
+    <h6>Измерения:</h6>
 
     <ul>
     {% for measurment in patient.measurement_set.all %}
